@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andres Felipe Mendoza Gomez | Software Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#7e22ce',
+                        secondary: '#3b0764',
+                        dark: '#0f172a'
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-poppins fade-in modern-bg-radial">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-2xl font-bold text-primary">Andres<span class="text-secondary">Dev</span></div>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8">
+                    <li><a href="#home" class="text-slate-600 hover:text-primary font-medium">Home</a></li>
+                    <li><a href="#skills" class="text-slate-600 hover:text-primary font-medium">Skills</a></li>
+                    <li><a href="#education" class="text-slate-600 hover:text-primary font-medium">Education</a></li>
+                    <li><a href="#experience" class="text-slate-600 hover:text-primary font-medium">Experience</a></li>
+                    <li><a href="#projects" class="text-slate-600 hover:text-primary font-medium">Projects</a></li>
+                </ul>
+            </nav>
+            <button class="md:hidden text-primary text-2xl">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 slide-up-fade slide-up-delay-1">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Hi all, I'm Andres</h1>
+                <p class="text-xl text-slate-600 mb-6 max-w-lg">
+                    I'm a Colombia-based software developer, currently open to work! I love helping new ideas come to life and building with a modern approach.
+                </p>
+                <div class="flex space-x-4 mb-8">
+                    <a href="https://www.linkedin.com/in/andres-felipe-mendoza-gomez-159553141/" target="_blank" class="social-icon text-2xl text-slate-600 hover:text-primary">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/LowProfile9" target="_blank" class="social-icon text-2xl text-slate-600 hover:text-primary">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/cmos_andr/" target="_blank" class="social-icon text-2xl text-slate-600 hover:text-primary">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://drive.google.com/file/d/1WkGK9UZhLRLOeJQntl2-gxl4OVqFkAnH/view?usp=sharing" target="_blank" class="px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-secondary transition duration-300">
+                        Download Resume
+                    </a>
+                    <a href="#contact" class="px-6 py-3 text-primary border border-primary font-medium rounded-lg hover:bg-slate-50 transition duration-300">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <iframe src="https://lottie.host/embed/2029b296-5d0c-4988-aa89-315d0e492b26/jIOcH0H264.lottie" style="width: 260px; height: 260px; border: none; background: transparent;" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 slide-up-fade slide-up-delay-2">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center section-title">Skills & Proficiency</h2>
+            
+            <div class="grid md:grid-cols-2 gap-x-16 gap-y-12 mb-16">
+                <div class="bg-slate-50 p-8 rounded-xl border-2 border-slate-700 shadow-2xl">
+                    <div class="flex items-center mb-6">
+                        <div class="mr-4 text-3xl text-primary">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold">Junior Frontend Developer</h3>
+                    </div>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2">⚡</span>
+                            <span>Building responsive Single-Page-Websites (SPA) & PWA in React.js</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-primary mr-2">⚡</span>
+                            <span>Building responsive static websites using Next.js</span>
+                        </li>
+                    </ul>
+                    <div class="flex justify-center mt-6">
+                        <iframe src="https://lottie.host/embed/79104e14-c666-479d-a116-ae34dcb06e27/7063tb6AYf.lottie" style="width: 200px; height: 200px; display: block; margin: 0 auto; border: none; background: transparent;" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+                <div class="bg-slate-50 p-8 rounded-xl border-2 border-slate-700 shadow-2xl">
+                    <h3 class="text-2xl font-bold mb-6">Proficiency</h3>
+                    <div class="space-y-8">
+                        <div class="flex items-center ml-0">
+                            <span class="font-medium w-40">Frontend/Design</span>
+                            <div class="circular-proficiency ml-4">
+                                <div id="frontend-circle"></div>
+                                <span class="circular-label" id="frontend-circle-label">0%</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center ml-12">
+                            <span class="font-medium w-40">Backend</span>
+                            <div class="circular-proficiency ml-4">
+                                <div id="backend-circle"></div>
+                                <span class="circular-label" id="backend-circle-label">0%</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center ml-24">
+                            <span class="font-medium w-40">Programming</span>
+                            <div class="circular-proficiency ml-4">
+                                <div id="programming-circle"></div>
+                                <span class="circular-label" id="programming-circle-label">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-16 slide-up-fade slide-up-delay-3">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center section-title">Education</h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="timeline-item">
+                    <h3 class="text-xl font-bold text-primary">University of Santander UDES</h3>
+                    <p class="font-semibold text-slate-600">Bachelor in Foreign Trade</p>
+                    <p class="text-slate-500 text-sm mb-3">August 2017 - November 2022</p>
+                    <p class="text-slate-700">Expert in charge of the management, coordination and optimization of commercial operations between different countries, facilitating the flow of goods, services and capital across borders. With great knowledge of customs laws, and operations.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <h3 class="text-xl font-bold text-primary">Campuslands</h3>
+                    <p class="font-semibold text-slate-600">Backend Software Development Technologist</p>
+                    <p class="text-slate-500 text-sm mb-3">March 2025 to Present</p>
+                    <p class="text-slate-700">A scholarship where I have the valuable opportunity to grow my abilities to program increasingly incredible things! At the moment I am well versed in Python, Java, Javascript, HTML & CSS, with knowledge in SQL & NoSQL databases.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 slide-up-fade slide-up-delay-4">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center section-title">Work Experience</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-12">
+                <div class="bg-slate-50 p-6 rounded-xl border-2 border-slate-700 shadow-2xl">
+                    <div class="flex flex-col md:flex-row md:items-center mb-4">
+                        <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 text-2xl mr-4 mb-4 md:mb-0">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Freelance Software Developer</h3>
+                            <p class="font-semibold text-primary">Misc · November 2022 - Present</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-700">While freelancing, I picked up small jobs here and there: I diagnosed and repaired computers, and even set up LLMs for a small AI project of my own. I also worked on web design for a small local business, where I took on the challenge of making a shopping cart and a dashboard for view metrics.</p>
+                </div>
+                
+                <div class="bg-slate-50 p-6 rounded-xl border-2 border-slate-700 shadow-2xl">
+                    <div class="flex flex-col md:flex-row md:items-center mb-4">
+                        <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 text-2xl mr-4 mb-4 md:mb-0">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Commercial Assistant & Analyst</h3>
+                            <p class="font-semibold text-primary">Coexnort - Group Coex · January 2021 - July 2021</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-700">After my internship, I stayed a few months to keep up with the team, where I thrived managing the data and raising potential clients by roughly 15%.</p>
+                </div>
+                
+                <div class="bg-slate-50 p-6 rounded-xl border-2 border-slate-700 shadow-2xl">
+                    <div class="flex flex-col md:flex-row md:items-center mb-4">
+                        <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 text-2xl mr-4 mb-4 md:mb-0">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Commercial Assistant Intern</h3>
+                            <p class="font-semibold text-primary">Coexnort - Group Coex · January 2021 - July 2021</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-700">Internship, where I was able to learn about customs first hand, managing emails with clients and interacting with them. It was, for me, a personal eye-opener. It's also where my love for data and automatizations grew. I was able to make a simple auto response for my boss, with notifications for when and how a meeting with a client was happening.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 slide-up-fade slide-up-delay-5">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center section-title">Projects</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300 max-w-xs mx-auto">
+                    <div class="h-48 bg-gradient-to-r from-purple-400 to-indigo-500 flex items-center justify-center">
+                        <iframe src="https://lottie.host/embed/1a75dca4-4827-4d31-91af-4e17f1e52d17/h0zgDK6yES.lottie" style="width: 260px; height: 190px; border: none; background: transparent; display: block; margin: 0 auto;" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Dashboard for view count</h3>
+                        <p class="text-slate-600 mb-4">For one of my projects, I had to make a dashboard, so I took the opportunity to create one for myself.</p>
+                        <button onclick="window.open('./dashboard.html', '_blank')" class="inline-block px-5 py-2 rounded-lg font-medium text-white bg-gradient-to-r from-primary/80 to-secondary/80 hover:opacity-90 transition mb-2">Live Preview</button>
+                    </div>
+                </div>
+                <!-- Modal Dashboard -->
+                <div id="modal-dashboard" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 hidden">
+                    <div class="bg-white rounded-xl p-8 max-w-lg w-full relative">
+                        <button onclick="document.getElementById('modal-dashboard').classList.add('hidden')" class="absolute top-2 right-2 text-2xl text-primary">&times;</button>
+                        <h2 class="text-2xl font-bold mb-4 text-primary">Dashboard Live Preview</h2>
+                        <p class="text-slate-700"></p>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300 max-w-xs mx-auto">
+                    <div class="h-48 bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                        <iframe src="https://lottie.host/embed/c6fd5071-2d05-4dc7-a284-d6373cb4cb8a/D5SQnutqO3.lottie" style="width: 260px; height: 190px; border: none; background: transparent; display: block; margin: 0 auto;" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Shopping Cart</h3>
+                        <p class="text-slate-600 mb-4">Following the Dashboard I was asked to do the frontend on a shopping cart, so I took a modern-purple approach.</p>
+                        <button onclick="window.open('./shopping-cart.html', '_blank')" class="inline-block px-5 py-2 rounded-lg font-medium text-white bg-gradient-to-r from-primary/80 to-secondary/80 hover:opacity-90 transition mb-2">Live Preview</button>
+                    </div>
+                </div>
+                <!-- Modal Shopping Cart -->
+                <div id="modal-shopping" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 hidden">
+                    <div class="bg-white rounded-xl p-8 max-w-lg w-full relative">
+                        <button onclick="document.getElementById('modal-shopping').classList.add('hidden')" class="absolute top-2 right-2 text-2xl text-primary">&times;</button>
+                        <h2 class="text-2xl font-bold mb-4 text-primary">Shopping Cart Live Preview</h2>
+                        <p class="text-slate-700"></p>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300 max-w-xs mx-auto">
+                    <div class="h-48 bg-gradient-to-r from-purple-600 to-blue-500 flex items-center justify-center">
+                        <div class="text-5xl text-white"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Crunchyroll-like anime page</h3>
+                        <p class="text-slate-600 mb-4">A passion project with friends! We are trying to make an anime player, with manga as extra content. Our idea is to make it functional, but only for demo purposes ;)</p>
+                        <a href="https://github.com/jeison-nura/animetest" target="_blank" class="inline-block px-5 py-2 rounded-lg font-medium text-white bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition">
+                            <i class="fab fa-github mr-2"></i>View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gradient-to-b from-slate-50 to-white slide-up-fade slide-up-delay-5">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-12 section-title">Contact me!</h2>
+            <a href="https://wa.me/573243915140" target="_blank" class="inline-flex items-center px-8 py-4 bg-green-500 text-white text-xl font-semibold rounded-lg shadow-lg hover:bg-green-600 transition duration-300">
+                <i class="fab fa-whatsapp text-2xl mr-3"></i> Send me a message on WhatsApp!
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-2xl font-bold mb-2">Andres<span class="text-primary">Dev</span></div>
+                    <p class="text-slate-300">Turning ideas into reality with code</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://www.linkedin.com/in/andres-felipe-mendoza-gomez-159553141/" target="_blank" class="social-icon text-xl text-slate-300 hover:text-white">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/LowProfile9" target="_blank" class="social-icon text-xl text-slate-300 hover:text-white">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/cmos_andr/" target="_blank" class="social-icon text-xl text-slate-300 hover:text-white">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-slate-700 mt-8 pt-8 text-center text-slate-400">
+                <p>© 2025 Andres Felipe Mendoza Gomez. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/progressbar.js"></script>
+    <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #000;
+}
+
+/* Tema oscuro con Tailwind */
+.bg-white, .bg-slate-50 {
+  background-color: #181e2a !important;
+}
+.text-slate-800, .text-slate-600 {
+  color: #e5e7eb !important;
+}
+.skill-bar {
+    height: 8px;
+    border-radius: 4px;
+    background: #e5e7eb;
+    overflow: hidden;
+}
+.skill-progress {
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #7e22ce, #3b0764);
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.section-title {
+    position: relative;
+    display: inline-block;
+}
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 50%;
+    height: 4px;
+    background: linear-gradient(90deg, #7e22ce, #3b0764);
+    border-radius: 2px;
+}
+.timeline-item {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 40px;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #7e22ce;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px #7e22ce;
+}
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 24px;
+    bottom: -40px;
+    width: 2px;
+    background: #cbd5e1;
+}
+.timeline-item:last-child::after {
+    display: none;
+}
+.social-icon {
+    transition: all 0.3s ease;
+}
+.social-icon:hover {
+    transform: translateY(-3px);
+    color: #7e22ce;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+}
+
+.fade-in-delay-1 {
+  animation-delay: 0.8s;
+}
+.fade-in-delay-2 {
+  animation-delay: 1.6s;
+}
+.fade-in-delay-3 {
+  animation-delay: 2.4s;
+}
+.fade-in-delay-4 {
+  animation-delay: 3.2s;
+}
+
+/* Fondo moderno: Degradado radial con azul oscuro */
+.modern-bg-radial {
+  background: radial-gradient(circle at 60% 40%, #a78bfa 0%, #7e22ce 40%, #0f172a 80%, #0a2240 100%);
+}
+
+/* Fondo moderno: Degradado lineal */
+.modern-bg-linear {
+  background: linear-gradient(135deg, #a78bfa 0%, #7e22ce 60%, #0f172a 100%);
+}
+
+/* Proficiency Bars - Modern Style (ajustado) */
+.proficiency-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+.proficiency-bar {
+  background: #fff;
+  border: 2px solid #cbd5e1;
+  border-radius: 9999px;
+  height: 0.5rem;
+  width: 100%;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  box-shadow: 0 2px 8px 0 rgba(126,34,206,0.10), 0 1.5px 4px 0 rgba(60,60,60,0.06);
+}
+.proficiency-progress {
+  background: #ff4e4e;
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+}
+.proficiency-label {
+  color: #1e293b;
+  font-size: 1.1rem;
+  font-weight: 700;
+  min-width: 2.8rem;
+  text-align: right;
+  z-index: 2;
+}
+.custom-bar-container {
+  background: #fff;
+  border: 2px solid #cbd5e1;
+  border-radius: 9999px;
+  height: 0.5rem;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 2px 8px 0 rgba(126,34,206,0.10), 0 1.5px 4px 0 rgba(60,60,60,0.06);
+}
+.custom-bar-progress {
+  background: #7e22ce;
+  height: 100%;
+  border-radius: 9999px;
+  width: 0%;
+  transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+/* Forzar ambos extremos redondeados en todas las barras de ProgressBar.js */
+.proficiency-row svg path {
+  stroke-linecap: round !important;
+}
+/* Forzar ambos extremos redondeados en todas las barras SVG de ProgressBar.js */
+svg path[stroke-linecap] {
+  stroke-linecap: round !important;
+}
+
+.circular-proficiency {
+  position: relative;
+  width: 65px;
+  height: 65px;
+  margin: 0 auto;
+  display: inline-block;
+}
+.circular-proficiency #frontend-circle,
+.circular-proficiency #backend-circle,
+.circular-proficiency #programming-circle {
+  width: 65px;
+  height: 65px;
+}
+.circular-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #7e22ce;
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.slide-up-fade {
+  opacity: 0;
+  animation: slideUpFade 1s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.slide-up-delay-1 {
+  animation-delay: 1s;
+}
+.slide-up-delay-2 {
+  animation-delay: 2s;
+}
+.slide-up-delay-3 {
+  animation-delay: 3s;
+}
+.slide-up-delay-4 {
+  animation-delay: 4s;
+}
+.slide-up-delay-5 {
+  animation-delay: 5s;
+}
+
+/* Mejorar distinción de cards en tema oscuro */
+.p-8.rounded-xl.shadow-sm, .p-6.rounded-xl.shadow-sm {
+  border: 2.5px solid #232a3a;
+  box-shadow: 0 6px 32px 0 rgba(30,41,59,0.35), 0 1.5px 4px 0 rgba(60,60,60,0.10);
+  margin-bottom: 2.5rem;
+  background: rgba(24,30,42,0.98);
+}

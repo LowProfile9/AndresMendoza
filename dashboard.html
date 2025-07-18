@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Visits Dashboard</title>
+    <style>
+        :root {
+            --dark-bg: #0f0c1d;
+            --card-bg: #1a1a2e;
+            --accent: #8a2be2;
+            --accent-light: #9d4fe8;
+            --accent-dark: #6a0dad;
+            --text: #ffffff;
+            --text-secondary: #d0d0d0;
+            --success: #00c9a7;
+            --warning: #ffd166;
+            --danger: #ff6b6b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .dashboard {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--accent-dark);
+            margin-bottom: 30px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent-light), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .user-area {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .date-display {
+            background-color: var(--card-bg);
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .user-profile {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .kpi-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .kpi-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent), var(--accent-light));
+        }
+        
+        .kpi-title {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .kpi-value {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .kpi-trend {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            gap: 5px;
+        }
+        
+        .trend-up {
+            color: var(--success);
+        }
+        
+        .trend-down {
+            color: var(--danger);
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .chart-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        .time-filter {
+            background-color: rgba(138, 43, 226, 0.2);
+            border-radius: 30px;
+            padding: 6px;
+            display: flex;
+            gap: 5px;
+        }
+        
+        .filter-btn {
+            padding: 6px 15px;
+            border-radius: 30px;
+            border: none;
+            background: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .chart-container {
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 100%;
+            padding: 0 20px;
+            gap: 15px;
+        }
+        
+        .bar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            width: 40px;
+        }
+        
+        .bar-label {
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .bar {
+            width: 100%;
+            background: linear-gradient(to top, var(--accent), var(--accent-light));
+            border-radius: 5px 5px 0 0;
+            min-height: 5px;
+            transition: height 0.5s ease;
+            position: relative;
+        }
+        
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent);
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .bar:hover .bar-value {
+            opacity: 1;
+        }
+        
+        .pie-chart-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 250px;
+            position: relative;
+        }
+        
+        .pie-chart {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--accent) 0% 35%,
+                var(--accent-light) 35% 65%,
+                var(--success) 65% 85%,
+                var(--warning) 85% 100%
+            );
+            position: relative;
+        }
+        
+        .pie-center {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: var(--card-bg);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .pie-total {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .pie-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+        }
+        
+        .devices-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .devices-table th {
+            text-align: left;
+            padding: 12px 15px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+        }
+        
+        .devices-table td {
+            padding: 15px;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.1);
+        }
+        
+        .devices-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .device-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .device-icon {
+            width: 30px;
+            height: 30px;
+            background-color: var(--accent-dark);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .change-positive {
+            color: var(--success);
+            font-weight: 500;
+        }
+        
+        .change-negative {
+            color: var(--danger);
+            font-weight: 500;
+        }
+        
+        .footer {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .recent-activity {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .activity-list {
+            margin-top: 20px;
+        }
+        
+        .activity-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.1);
+        }
+        
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background-color: var(--accent-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .activity-content {
+            flex-grow: 1;
+        }
+        
+        .activity-title {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .activity-time {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .kpi-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+            
+            </div>
+            <div class="user-area">
+                <div class="date-display">Andres Mendoza</div>
+                <div class="user-profile">AM</div>
+            </div>
+        </header>
+        
+        <!-- KPI Cards -->
+        <div class="kpi-cards">
+            <div class="kpi-card">
+                <div class="kpi-title">Total Visits</div>
+                <div class="kpi-value">8,888</div>
+                <div class="kpi-trend trend-up">
+                    <span>↑ 99.9%</span> compared to previous demo
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-title">Active Users</div>
+                <div class="kpi-value">321</div>
+                <div class="kpi-trend trend-down">
+                    <span>↓ 12.3%</span> compared to previous demo
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-title">Bounce Rate</div>
+                <div class="kpi-value">77%</div>
+                <div class="kpi-trend trend-up">
+                    <span>↑ 7.7%</span> compared to previous demo
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-title">Average Duration</div>
+                <div class="kpi-value">0m 42s</div>
+                <div class="kpi-trend trend-down">
+                    <span>↓ 1m 10s</span> compared to previous demo
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Bar Chart -->
+            <div class="chart-card">
+                <div class="card-header">
+                    <div class="card-title">Visits by Day of the Week</div>
+                    <div class="time-filter">
+                        <button class="filter-btn">Daily</button>
+                        <button class="filter-btn active">Weekly</button>
+                        <button class="filter-btn">Monthly</button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <div class="bar-chart">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Pie Chart -->
+            <div class="chart-card">
+                <div class="card-header">
+                    <div class="card-title">Access Devices</div>
+                </div>
+                <div class="pie-chart-container">
+                    <div class="pie-chart" style="background: conic-gradient(
+                        var(--accent) 0% 20%,
+                        var(--accent-light) 20% 60%,
+                        var(--success) 60% 90%,
+                        var(--warning) 90% 100%
+                    );">
+                        <div class="pie-center">
+                            <div class="pie-total">9.9K</div>
+                            <div class="pie-label">visits</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: var(--accent);"></div>
+                        <div>Smartwatch (20%)</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: var(--accent-light);"></div>
+                        <div>Desktop (40%)</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: var(--success);"></div>
+                        <div>Tablet (30%)</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: var(--warning);"></div>
+                        <div>Other (10%)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="recent-activity">
+                <div class="card-title">Recent Activity</div>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon">🎉</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Demo started</div>
+                            <div class="activity-desc">Random data generated for the demo</div>
+                            <div class="activity-time">1 minute ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">🧪</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Component test</div>
+                            <div class="activity-desc">Bar chart tested with fake data</div>
+                            <div class="activity-time">2 minutes ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">⚡</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Visual update</div>
+                            <div class="activity-desc">Color scheme changed for the demo</div>
+                            <div class="activity-time">3 minutes ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chart-card">
+                <div class="card-header">
+                    <div class="card-title">Traffic Sources</div>
+                </div>
+                <div class="pie-chart-container" style="height: 200px;">
+                    <div class="pie-chart" style="width: 150px; height: 150px; background: conic-gradient(
+                        var(--accent) 0% 10%,
+                        var(--accent-light) 10% 60%,
+                        var(--success) 60% 80%,
+                        var(--warning) 80% 100%
+                    );">
+                        <div class="pie-center" style="width: 70px; height: 70px;">
+                            <div class="pie-total" style="font-size: 18px;">100%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: var(--accent);"></div>
+                        <div>Direct (10%)</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: var(--accent-light);"></div>
+                        <div>Search (50%)</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: var(--success);"></div>
+                        <div>Social (20%)</div>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background-color: var(--warning);"></div>
+                        <div>Referral (20%)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fake data for filters
+        const barData = {
+            daily: [
+                { label: 'Mon', value: 22 },
+                { label: 'Tue', value: 35 },
+                { label: 'Wed', value: 18 },
+                { label: 'Thu', value: 40 },
+                { label: 'Fri', value: 27 },
+                { label: 'Sat', value: 31 },
+                { label: 'Sun', value: 15 }
+            ],
+            weekly: [
+                { label: 'Week 1', value: 123 },
+                { label: 'Week 2', value: 1111 },
+                { label: 'Week 3', value: 333 },
+                { label: 'Week 4', value: 678 },
+                { label: 'Week 5', value: 222 },
+                { label: 'Week 6', value: 888 },
+                { label: 'Week 7', value: 555 }
+            ],
+            monthly: [
+                { label: 'Jan', value: 3200 },
+                { label: 'Feb', value: 4100 },
+                { label: 'Mar', value: 2900 },
+                { label: 'Apr', value: 3700 },
+                { label: 'May', value: 2500 },
+                { label: 'Jun', value: 3900 },
+                { label: 'Jul', value: 2100 }
+            ]
+        };
+
+        // Function to render the bar chart based on the period
+        function renderBarChart(period) {
+            const data = barData[period];
+            const max = Math.max(...data.map(d => d.value));
+            const barChart = document.querySelector('.bar-chart');
+            barChart.innerHTML = '';
+            data.forEach(d => {
+                const barContainer = document.createElement('div');
+                barContainer.className = 'bar-container';
+                const bar = document.createElement('div');
+                bar.className = 'bar';
+                bar.style.height = (d.value / max * 100) + '%';
+                const barValue = document.createElement('div');
+                barValue.className = 'bar-value';
+                barValue.textContent = d.value;
+                bar.appendChild(barValue);
+                const barLabel = document.createElement('div');
+                barLabel.className = 'bar-label';
+                barLabel.textContent = d.label;
+                barContainer.appendChild(bar);
+                barContainer.appendChild(barLabel);
+                barChart.appendChild(barContainer);
+            });
+            // Reassign hover events
+            document.querySelectorAll('.bar').forEach(bar => {
+                bar.addEventListener('mouseover', function() {
+                    this.style.opacity = '0.8';
+                });
+                bar.addEventListener('mouseout', function() {
+                    this.style.opacity = '1';
+                });
+            });
+        }
+
+        // Change time filter
+        document.querySelectorAll('.filter-btn').forEach((btn, idx) => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('active');
+                });
+                this.classList.add('active');
+                if(idx === 0) renderBarChart('daily');
+                if(idx === 1) renderBarChart('weekly');
+                if(idx === 2) renderBarChart('monthly');
+            });
+        });
+        // Initialize with weekly data
+        renderBarChart('weekly');
+    </script>
+</body>
+</html>
