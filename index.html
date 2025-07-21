@@ -24,8 +24,46 @@
             }
         }
     </script>
+    <style>
+      body { background: #fff !important; }
+      html.dark body {
+        background: radial-gradient(circle at 60% 40%, #232a3a 0%, #181a20 80%, #181a20 100%) !important;
+        color: #fff !important;
+      }
+      html.dark .section-title,
+      html.dark .text-xl.font-bold,
+      html.dark .text-3xl.font-bold {
+        color: #7e22ce !important;
+      }
+      html.dark .project-card,
+      html.dark .bg-slate-50,
+      html.dark .bg-white {
+        background: #181a20 !important;
+        color: #fff !important;
+        box-shadow: 0 8px 32px 0 rgba(60, 0, 120, 0.25), 0 1.5px 4px 0 rgba(60,60,60,0.10) !important;
+        border: none !important;
+      }
+      html.dark .text-slate-800,
+      html.dark .text-slate-600,
+      html.dark .text-slate-300,
+      html.dark .text-slate-400,
+      html.dark .text-slate-500,
+      html.dark .text-primary {
+        color: #fff !important;
+      }
+      .text-almost-white { color: #444; }
+      html.dark .text-almost-white { color: #e5e7eb !important; }
+      html.dark .lottie-hero {
+        filter: invert(1);
+      }
+      .no-cage, .no-cage:focus, .no-cage:active {
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+      }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-poppins fade-in modern-bg-radial">
+<body class="text-slate-800 font-poppins fade-in bg-slate-50 dark:bg-[#181a20]">
     <!-- Header/Navigation -->
     <header class="fixed w-full z-50 bg-white shadow-sm">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -39,9 +77,17 @@
                     <li><a href="#projects" class="text-slate-600 hover:text-primary font-medium">Projects</a></li>
                 </ul>
             </nav>
-            <button class="md:hidden text-primary text-2xl">
-                <i class="fas fa-bars"></i>
-            </button>
+            <div class="flex items-center space-x-4">
+                <button id="dark-toggle" class="text-xl text-primary hover:text-secondary focus:outline-none" title="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button id="lang-toggle" class="text-xl text-primary hover:text-secondary focus:outline-none px-2 py-1 rounded no-cage" title="Switch language">
+                    EN/ES
+                </button>
+                <button class="md:hidden text-primary text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -65,16 +111,13 @@
                     </a>
                 </div>
                 <div class="flex flex-wrap gap-4">
-                    <a href="https://drive.google.com/file/d/1WkGK9UZhLRLOeJQntl2-gxl4OVqFkAnH/view?usp=sharing" target="_blank" class="px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-secondary transition duration-300">
-                        Download Resume
-                    </a>
-                    <a href="#contact" class="px-6 py-3 text-primary border border-primary font-medium rounded-lg hover:bg-slate-50 transition duration-300">
-                        Contact Me
-                    </a>
+                    <a href="https://drive.google.com/file/d/1VryLNAQS3L0_2R7i-XYoGcGFK0P_Kpwi/view?usp=sharing" target="_blank" class="px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-secondary transition duration-300" data-translate-hero="heroResumeEn">Download Resume in English</a>
+                    <a href="https://drive.google.com/file/d/1WkGK9UZhLRLOeJQntl2-gxl4OVqFkAnH/view?usp=sharing" target="_blank" class="px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-secondary transition duration-300" data-translate-hero="heroResumeEs">Download Resume in Spanish</a>
+                    <a href="#contact" class="px-6 py-3 text-primary border border-primary font-medium rounded-lg hover:bg-slate-50 transition duration-300" data-translate-hero="heroContact">Contact Me</a>
                 </div>
             </div>
             <div class="md:w-1/2 flex justify-center">
-                <iframe src="https://lottie.host/embed/2029b296-5d0c-4988-aa89-315d0e492b26/jIOcH0H264.lottie" style="width: 260px; height: 260px; border: none; background: transparent;" allowfullscreen></iframe>
+                <iframe src="https://lottie.host/embed/2029b296-5d0c-4988-aa89-315d0e492b26/jIOcH0H264.lottie" class="lottie-hero" style="width: 260px; height: 260px; border: none; background: transparent;" allowfullscreen></iframe>
             </div>
         </div>
     </section>
@@ -82,7 +125,7 @@
     <!-- Skills Section -->
     <section id="skills" class="py-16 slide-up-fade slide-up-delay-2">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center section-title">Skills & Proficiency</h2>
+            <h2 class="text-3xl font-bold mb-12 text-center section-title" data-translate-skills="skillsTitle">Skills & Proficiency</h2>
             
             <div class="grid md:grid-cols-2 gap-x-16 gap-y-12 mb-16">
                 <div class="bg-slate-50 p-8 rounded-xl border-2 border-slate-700 shadow-2xl">
@@ -90,16 +133,16 @@
                         <div class="mr-4 text-3xl text-primary">
                             <i class="fas fa-code"></i>
                         </div>
-                        <h3 class="text-2xl font-bold">Junior Frontend Developer</h3>
+                        <h3 class="text-2xl font-bold" data-translate-skills="skillsRole">Junior Frontend Developer</h3>
                     </div>
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <span class="text-primary mr-2">⚡</span>
-                            <span>Building responsive Single-Page-Websites (SPA) & PWA in React.js</span>
+                            <span data-translate-skills="skillsReact">Building responsive Single-Page-Websites (SPA) & PWA in React.js</span>
                         </li>
                         <li class="flex items-start">
                             <span class="text-primary mr-2">⚡</span>
-                            <span>Building responsive static websites using Next.js</span>
+                            <span data-translate-skills="skillsNext">Building responsive static websites using Next.js</span>
                         </li>
                     </ul>
                     <div class="flex justify-center mt-6">
@@ -108,24 +151,24 @@
                 </div>
                 
                 <div class="bg-slate-50 p-8 rounded-xl border-2 border-slate-700 shadow-2xl">
-                    <h3 class="text-2xl font-bold mb-6">Proficiency</h3>
+                    <h3 class="text-2xl font-bold mb-6" data-translate-skills="skillsProficiency">Proficiency</h3>
                     <div class="space-y-8">
                         <div class="flex items-center ml-0">
-                            <span class="font-medium w-40">Frontend/Design</span>
+                            <span class="font-medium w-40" data-translate-skills="skillsFrontend">Frontend/Design</span>
                             <div class="circular-proficiency ml-4">
                                 <div id="frontend-circle"></div>
                                 <span class="circular-label" id="frontend-circle-label">0%</span>
                             </div>
                         </div>
                         <div class="flex items-center ml-12">
-                            <span class="font-medium w-40">Backend</span>
+                            <span class="font-medium w-40" data-translate-skills="skillsBackend">Backend</span>
                             <div class="circular-proficiency ml-4">
                                 <div id="backend-circle"></div>
                                 <span class="circular-label" id="backend-circle-label">0%</span>
                             </div>
                         </div>
                         <div class="flex items-center ml-24">
-                            <span class="font-medium w-40">Programming</span>
+                            <span class="font-medium w-40" data-translate-skills="skillsProgramming">Programming</span>
                             <div class="circular-proficiency ml-4">
                                 <div id="programming-circle"></div>
                                 <span class="circular-label" id="programming-circle-label">0%</span>
@@ -144,17 +187,17 @@
             
             <div class="max-w-3xl mx-auto">
                 <div class="timeline-item">
-                    <h3 class="text-xl font-bold text-primary">University of Santander UDES</h3>
-                    <p class="font-semibold text-slate-600">Bachelor in Foreign Trade</p>
-                    <p class="text-slate-500 text-sm mb-3">August 2017 - November 2022</p>
-                    <p class="text-slate-700">Expert in charge of the management, coordination and optimization of commercial operations between different countries, facilitating the flow of goods, services and capital across borders. With great knowledge of customs laws, and operations.</p>
+                    <h3 class="text-xl font-bold text-primary" data-translate-edu="edu1Title">University of Santander UDES</h3>
+                    <p class="font-semibold text-slate-600" data-translate-edu="edu1Degree">Bachelor in Foreign Trade</p>
+                    <p class="text-slate-500 text-sm mb-3" data-translate-edu="edu1Date">August 2017 - November 2022</p>
+                    <p class="text-slate-700 text-almost-white" data-translate-edu="edu1Desc">Expert in charge of the management, coordination and optimization of commercial operations between different countries, facilitating the flow of goods, services and capital across borders. With great knowledge of customs laws, and operations.</p>
                 </div>
                 
                 <div class="timeline-item">
-                    <h3 class="text-xl font-bold text-primary">Campuslands</h3>
-                    <p class="font-semibold text-slate-600">Backend Software Development Technologist</p>
-                    <p class="text-slate-500 text-sm mb-3">March 2025 to Present</p>
-                    <p class="text-slate-700">A scholarship where I have the valuable opportunity to grow my abilities to program increasingly incredible things! At the moment I am well versed in Python, Java, Javascript, HTML & CSS, with knowledge in SQL & NoSQL databases.</p>
+                    <h3 class="text-xl font-bold text-primary" data-translate-edu="edu2Title">Campuslands</h3>
+                    <p class="font-semibold text-slate-600" data-translate-edu="edu2Degree">Backend Software Development Technologist</p>
+                    <p class="text-slate-500 text-sm mb-3" data-translate-edu="edu2Date">March 2025 to Present</p>
+                    <p class="text-slate-700 text-almost-white" data-translate-edu="edu2Desc">A scholarship where I have the valuable opportunity to grow my abilities to program increasingly incredible things! At the moment I am well versed in Python, Java, Javascript, HTML & CSS, with knowledge in SQL & NoSQL databases.</p>
                 </div>
             </div>
         </div>
@@ -172,11 +215,11 @@
                             <i class="fas fa-laptop-code"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold">Freelance Software Developer</h3>
-                            <p class="font-semibold text-primary">Misc · November 2022 - Present</p>
+                            <h3 class="text-xl font-bold" data-translate-exp="exp1Title">Freelance Software Developer</h3>
+                            <p class="font-semibold text-primary" data-translate-exp="exp1Company">Misc · November 2022 - Present</p>
                         </div>
                     </div>
-                    <p class="text-slate-700">While freelancing, I picked up small jobs here and there: I diagnosed and repaired computers, and even set up LLMs for a small AI project of my own. I also worked on web design for a small local business, where I took on the challenge of making a shopping cart and a dashboard for view metrics.</p>
+                    <p class="text-slate-700 text-almost-white" data-translate-exp="exp1Desc">While freelancing, I picked up small jobs here and there: I diagnosed and repaired computers, and even set up LLMs for a small AI project of my own. I also worked on web design for a small local business, where I took on the challenge of making a shopping cart and a dashboard for view metrics.</p>
                 </div>
                 
                 <div class="bg-slate-50 p-6 rounded-xl border-2 border-slate-700 shadow-2xl">
@@ -185,11 +228,11 @@
                             <i class="fas fa-chart-line"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold">Commercial Assistant & Analyst</h3>
-                            <p class="font-semibold text-primary">Coexnort - Group Coex · January 2021 - July 2021</p>
+                            <h3 class="text-xl font-bold" data-translate-exp="exp2Title">Commercial Assistant & Analyst</h3>
+                            <p class="font-semibold text-primary" data-translate-exp="exp2Company">Coexnort - Group Coex · January 2021 - July 2021</p>
                         </div>
                     </div>
-                    <p class="text-slate-700">After my internship, I stayed a few months to keep up with the team, where I thrived managing the data and raising potential clients by roughly 15%.</p>
+                    <p class="text-slate-700 text-almost-white" data-translate-exp="exp2Desc">After my internship, I stayed a few months to keep up with the team, where I thrived managing the data and raising potential clients by roughly 15%.</p>
                 </div>
                 
                 <div class="bg-slate-50 p-6 rounded-xl border-2 border-slate-700 shadow-2xl">
@@ -198,11 +241,11 @@
                             <i class="fas fa-code"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold">Commercial Assistant Intern</h3>
-                            <p class="font-semibold text-primary">Coexnort - Group Coex · January 2021 - July 2021</p>
+                            <h3 class="text-xl font-bold" data-translate-exp="exp3Title">Commercial Assistant Intern</h3>
+                            <p class="font-semibold text-primary" data-translate-exp="exp3Company">Coexnort - Group Coex · January 2021 - July 2021</p>
                         </div>
                     </div>
-                    <p class="text-slate-700">Internship, where I was able to learn about customs first hand, managing emails with clients and interacting with them. It was, for me, a personal eye-opener. It's also where my love for data and automatizations grew. I was able to make a simple auto response for my boss, with notifications for when and how a meeting with a client was happening.</p>
+                    <p class="text-slate-700 text-almost-white" data-translate-exp="exp3Desc">Internship, where I was able to learn about customs first hand, managing emails with clients and interacting with them. It was, for me, a personal eye-opener. It's also where my love for data and automatizations grew. I was able to make a simple auto response for my boss, with notifications for when and how a meeting with a client was happening.</p>
                 </div>
             </div>
         </div>
@@ -219,9 +262,9 @@
                         <iframe src="https://lottie.host/embed/1a75dca4-4827-4d31-91af-4e17f1e52d17/h0zgDK6yES.lottie" style="width: 260px; height: 190px; border: none; background: transparent; display: block; margin: 0 auto;" allowfullscreen></iframe>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Dashboard for view count</h3>
-                        <p class="text-slate-600 mb-4">For one of my projects, I had to make a dashboard, so I took the opportunity to create one for myself.</p>
-                        <button onclick="window.open('./dashboard.html', '_blank')" class="inline-block px-5 py-2 rounded-lg font-medium text-white bg-gradient-to-r from-primary/80 to-secondary/80 hover:opacity-90 transition mb-2">Live Preview</button>
+                        <h3 class="text-xl font-bold mb-2" data-translate-proj="proj1Title">Dashboard for view count</h3>
+                        <p class="text-slate-600 mb-4 text-almost-white" data-translate-proj="proj1Desc">For one of my projects, I had to make a dashboard, so I took the opportunity to create one for myself.</p>
+                        <button onclick="window.open('./dashboard.html', '_blank')" class="inline-block px-5 py-2 rounded-lg font-medium text-white bg-gradient-to-r from-primary/80 to-secondary/80 hover:opacity-90 transition mb-2" data-translate-proj="proj1Btn">Live Preview</button>
                     </div>
                 </div>
                 <!-- Modal Dashboard -->
@@ -238,9 +281,9 @@
                         <iframe src="https://lottie.host/embed/c6fd5071-2d05-4dc7-a284-d6373cb4cb8a/D5SQnutqO3.lottie" style="width: 260px; height: 190px; border: none; background: transparent; display: block; margin: 0 auto;" allowfullscreen></iframe>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Shopping Cart</h3>
-                        <p class="text-slate-600 mb-4">Following the Dashboard I was asked to do the frontend on a shopping cart, so I took a modern-purple approach.</p>
-                        <button onclick="window.open('./shopping-cart.html', '_blank')" class="inline-block px-5 py-2 rounded-lg font-medium text-white bg-gradient-to-r from-primary/80 to-secondary/80 hover:opacity-90 transition mb-2">Live Preview</button>
+                        <h3 class="text-xl font-bold mb-2" data-translate-proj="proj2Title">Shopping Cart</h3>
+                        <p class="text-slate-600 mb-4 text-almost-white" data-translate-proj="proj2Desc">Following the Dashboard I was asked to do the frontend on a shopping cart, so I took a modern-purple approach.</p>
+                        <button onclick="window.open('./shopping-cart.html', '_blank')" class="inline-block px-5 py-2 rounded-lg font-medium text-white bg-gradient-to-r from-primary/80 to-secondary/80 hover:opacity-90 transition mb-2" data-translate-proj="proj2Btn">Live Preview</button>
                     </div>
                 </div>
                 <!-- Modal Shopping Cart -->
@@ -257,11 +300,9 @@
                         <div class="text-5xl text-white"></div>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Crunchyroll-like anime page</h3>
-                        <p class="text-slate-600 mb-4">A passion project with friends! We are trying to make an anime player, with manga as extra content. Our idea is to make it functional, but only for demo purposes ;)</p>
-                        <a href="https://github.com/jeison-nura/animetest" target="_blank" class="inline-block px-5 py-2 rounded-lg font-medium text-white bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition">
-                            <i class="fab fa-github mr-2"></i>View Repository
-                        </a>
+                        <h3 class="text-xl font-bold mb-2" data-translate-proj="proj3Title">Crunchyroll-like anime page</h3>
+                        <p class="text-slate-600 mb-4 text-almost-white" data-translate-proj="proj3Desc">A passion project with friends! We are trying to make an anime player, with manga as extra content. Our idea is to make it functional, but only for demo purposes ;)</p>
+                        <a href="https://github.com/jeison-nura/animetest" target="_blank" class="inline-block px-5 py-2 rounded-lg font-medium text-white bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition" data-translate-proj="proj3Btn" data-icon="fab fa-github mr-2"><i class="fab fa-github mr-2"></i>View Repository</a>
                     </div>
                 </div>
             </div>
@@ -273,7 +314,7 @@
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl font-bold mb-12 section-title">Contact me!</h2>
             <a href="https://wa.me/573243915140" target="_blank" class="inline-flex items-center px-8 py-4 bg-green-500 text-white text-xl font-semibold rounded-lg shadow-lg hover:bg-green-600 transition duration-300">
-                <i class="fab fa-whatsapp text-2xl mr-3"></i> Send me a message on WhatsApp!
+                <i class="fab fa-whatsapp text-2xl mr-3"></i> <span data-translate-contact="contactWhatsApp">Send me a message on WhatsApp!</span>
             </a>
         </div>
     </section>
@@ -284,7 +325,7 @@
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
                     <div class="text-2xl font-bold mb-2">Andres<span class="text-primary">Dev</span></div>
-                    <p class="text-slate-300">Turning ideas into reality with code</p>
+                    <p class="text-slate-300" data-translate-footer="footerSlogan">Turning ideas into reality with code</p>
                 </div>
                 <div class="flex space-x-6">
                     <a href="https://www.linkedin.com/in/andres-felipe-mendoza-gomez-159553141/" target="_blank" class="social-icon text-xl text-slate-300 hover:text-white">
@@ -299,7 +340,7 @@
                 </div>
             </div>
             <div class="border-t border-slate-700 mt-8 pt-8 text-center text-slate-400">
-                <p>© 2025 Andres Felipe Mendoza Gomez. All rights reserved.</p>
+                <p data-translate-footer="footerCopyright">© 2025 Andres Felipe Mendoza Gomez. All rights reserved.</p>
             </div>
         </div>
     </footer>
