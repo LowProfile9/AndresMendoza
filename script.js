@@ -99,16 +99,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Dark mode toggle
     const darkToggle = document.getElementById('dark-toggle');
+    const darkIcon = document.getElementById('dark-icon');
     function updateDarkButton() {
-        if(document.documentElement.classList.contains('dark')) {
-            darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
-            darkToggle.classList.add('bg-slate-800', 'text-yellow-300');
-            darkToggle.classList.remove('bg-white', 'text-primary');
-        } else {
-            darkToggle.innerHTML = '<i class="fas fa-moon"></i>';
-            darkToggle.classList.add('bg-white', 'text-primary');
-            darkToggle.classList.remove('bg-slate-800', 'text-yellow-300');
-        }
+        if(!darkToggle || !darkIcon) return;
+        const isDark = document.documentElement.classList.contains('dark');
+        darkToggle.classList.remove('bg-slate-800', 'bg-white');
+        darkToggle.classList.toggle('text-yellow-300', isDark);
+        darkToggle.classList.toggle('text-primary', !isDark);
+        darkIcon.classList.toggle('bulb-on', isDark);
+        darkIcon.classList.toggle('bulb-off', !isDark);
+        darkIcon.classList.remove('bulb-flash');
+        void darkIcon.offsetWidth;
+        darkIcon.classList.add('bulb-flash');
     }
     function setDarkModeClass(isDark) {
         if(isDark) {
@@ -180,9 +182,12 @@ document.addEventListener('DOMContentLoaded', function() {
             proj2Title: 'Shopping Cart',
             proj2Desc: 'Following the Dashboard I was asked to do the frontend on a shopping cart, so I took a modern-purple approach.',
             proj2Btn: 'Live Preview',
-            proj3Title: 'Crunchyroll-like anime page',
-            proj3Desc: 'A passion project with friends! We are trying to make an anime player, with manga as extra content. Our idea is to make it functional, but only for demo purposes ;)',
-            proj3Btn: 'View Repository',
+            proj4Title: 'Landing for Psychologist',
+            proj4Desc: 'Landing page with glass effect and clear CTAs for a clinical psychologist specialized in hypnotherapy.',
+            proj4Btn: 'Open site',
+            proj5Title: 'RapidExpress (Java CLI + MySQL)',
+            proj5Desc: 'Logistics management system with roles and routes, MVC architecture in Java and MySQL database.',
+            proj5Btn: 'View repository',
             // Education cards
             edu1Title: 'University of Santander UDES',
             edu1Degree: 'Bachelor in Foreign Trade',
@@ -236,9 +241,12 @@ document.addEventListener('DOMContentLoaded', function() {
             proj2Title: 'Carrito de Compras',
             proj2Desc: 'Después del Dashboard me pidieron hacer el frontend de un carrito de compras, así que usé un estilo moderno-morado.',
             proj2Btn: 'Vista en Vivo',
-            proj3Title: 'Página de anime tipo Crunchyroll',
-            proj3Desc: '¡Un proyecto de pasión con amigos! Queremos hacer un reproductor de anime, con manga como extra. La idea es que sea funcional, pero solo como demo ;)',
-            proj3Btn: 'Ver Repositorio',
+            proj4Title: 'Landing para Psicóloga',
+            proj4Desc: 'Landing page con efecto glass y llamados claros a la acción para una psicóloga clínica especialista en hipnoterapia.',
+            proj4Btn: 'Abrir sitio',
+            proj5Title: 'RapidExpress (Java CLI + MySQL)',
+            proj5Desc: 'Sistema de gestión logística con roles y rutas, arquitectura MVC en Java y base de datos MySQL.',
+            proj5Btn: 'Ver repositorio',
             // Education cards
             edu1Title: 'Universidad de Santander UDES',
             edu1Degree: 'Licenciatura en Comercio Exterior',

@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👨‍💻</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27><rect width=%27100%27 height=%27100%27 rx=%2718%27 fill=%27%237e22ce%27/><text x=%2750%27 y=%2762%27 font-size=%2754%27 text-anchor=%27middle%27 fill=%27white%27 font-family=%27Poppins,Arial,sans-serif%27>AM</text></svg>">
     <script>
         tailwind.config = {
             theme: {
@@ -61,6 +61,24 @@
         outline: none !important;
         box-shadow: none !important;
       }
+      .bulb-icon {
+        transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+      }
+      .bulb-on {
+        color: #facc15;
+        text-shadow: 0 0 8px rgba(250, 204, 21, 0.6);
+      }
+      .bulb-off {
+        color: #475569;
+      }
+      .bulb-flash {
+        animation: bulbFlash 0.4s ease;
+      }
+      @keyframes bulbFlash {
+        0% { transform: scale(0.9); filter: brightness(0.7); }
+        50% { transform: scale(1.1); filter: brightness(1.25); }
+        100% { transform: scale(1); filter: brightness(1); }
+      }
     </style>
 </head>
 <body class="text-slate-800 font-poppins fade-in bg-slate-50 dark:bg-[#181a20]">
@@ -78,8 +96,8 @@
                 </ul>
             </nav>
             <div class="flex items-center space-x-4">
-                <button id="dark-toggle" class="text-xl text-primary hover:text-secondary focus:outline-none" title="Toggle dark mode">
-                    <i class="fas fa-moon"></i>
+                <button id="dark-toggle" class="text-xl text-primary hover:text-secondary focus:outline-none no-cage bg-transparent" title="Toggle dark mode">
+                    <i id="dark-icon" class="fas fa-lightbulb bulb-icon bulb-off"></i>
                 </button>
                 <button id="lang-toggle" class="text-xl text-primary hover:text-secondary focus:outline-none px-2 py-1 rounded no-cage" title="Switch language">
                     EN/ES
@@ -137,11 +155,11 @@
                     </div>
                     <ul class="space-y-3">
                         <li class="flex items-start">
-                            <span class="text-primary mr-2">⚡</span>
+                        <i class="fas fa-bolt text-primary mr-2 mt-1"></i>
                             <span data-translate-skills="skillsReact">Building responsive Single-Page-Websites (SPA) & PWA in React.js</span>
                         </li>
                         <li class="flex items-start">
-                            <span class="text-primary mr-2">⚡</span>
+                        <i class="fas fa-bolt text-primary mr-2 mt-1"></i>
                             <span data-translate-skills="skillsNext">Building responsive static websites using Next.js</span>
                         </li>
                     </ul>
@@ -303,6 +321,26 @@
                         <h3 class="text-xl font-bold mb-2" data-translate-proj="proj3Title">Crunchyroll-like anime page</h3>
                         <p class="text-slate-600 mb-4 text-almost-white" data-translate-proj="proj3Desc">A passion project with friends! We are trying to make an anime player, with manga as extra content. Our idea is to make it functional, but only for demo purposes ;)</p>
                         <a href="https://github.com/jeison-nura/animetest" target="_blank" class="inline-block px-5 py-2 rounded-lg font-medium text-white bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition" data-translate-proj="proj3Btn" data-icon="fab fa-github mr-2"><i class="fab fa-github mr-2"></i>View Repository</a>
+                    </div>
+                </div>
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300 max-w-xs mx-auto">
+                    <div class="h-48 bg-gradient-to-r from-slate-900 via-slate-700 to-slate-500 flex items-center justify-center">
+                        <div class="text-4xl font-extrabold italic text-white transform -rotate-6 tracking-wide">RapidExpress</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2" data-translate-proj="proj5Title">RapidExpress (Java CLI + MySQL)</h3>
+                        <p class="text-slate-600 mb-4 text-almost-white" data-translate-proj="proj5Desc">Sistema de gestión logística con roles y rutas, arquitectura MVC en Java y base de datos MySQL.</p>
+                        <a href="https://github.com/LowProfile9/ProyectoJava" target="_blank" class="inline-block px-5 py-2 rounded-lg font-medium text-white bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition" data-translate-proj="proj5Btn" data-icon="fab fa-github mr-2"><i class="fab fa-github mr-2"></i>Ver repositorio</a>
+                    </div>
+                </div>
+                <div class="project-card bg-white rounded-xl overflow-hidden shadow-md transition duration-300 max-w-xs mx-auto">
+                    <div class="h-48 bg-gradient-to-r from-indigo-300 via-purple-400 to-blue-500 flex items-center justify-center">
+                        <i class="fas fa-heartbeat text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2" data-translate-proj="proj4Title">Landing para Psicóloga</h3>
+                        <p class="text-slate-600 mb-4 text-almost-white" data-translate-proj="proj4Desc">Landing page con efecto glass y CTA claros para una psicóloga clínica especializada en hipnoterapia.</p>
+                        <a href="https://psicologa-maria-herrera.com/" target="_blank" class="inline-block px-5 py-2 rounded-lg font-medium text-white bg-gradient-to-r from-primary/80 to-secondary/80 hover:opacity-90 transition" data-translate-proj="proj4Btn" data-icon="fas fa-arrow-up-right-from-square mr-2"><i class="fas fa-arrow-up-right-from-square mr-2"></i>Ver sitio</a>
                     </div>
                 </div>
             </div>
