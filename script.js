@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         bar.animate(value);
-        // Eliminado: No modificar manualmente el viewBox ni el path
+       
     }
 
     createSmallCircleBar('frontend-circle', 'frontend-circle-label', 0.55);
@@ -182,6 +182,9 @@ document.addEventListener('DOMContentLoaded', function() {
             proj2Title: 'Shopping Cart',
             proj2Desc: 'Following the Dashboard I was asked to do the frontend on a shopping cart, so I took a modern-purple approach.',
             proj2Btn: 'Live Preview',
+            proj3Title: 'Crunchyroll-like anime page',
+            proj3Desc: 'A passion project with friends! We are trying to make an anime player, with manga as extra content. Our idea is to make it functional, but only for demo purposes ;)',
+            proj3Btn: 'View Repository',
             proj4Title: 'Landing for Psychologist',
             proj4Desc: 'Landing page with glass effect and clear CTAs for a clinical psychologist specialized in hypnotherapy.',
             proj4Btn: 'Open site',
@@ -241,6 +244,9 @@ document.addEventListener('DOMContentLoaded', function() {
             proj2Title: 'Carrito de Compras',
             proj2Desc: 'Después del Dashboard me pidieron hacer el frontend de un carrito de compras, así que usé un estilo moderno-morado.',
             proj2Btn: 'Vista en Vivo',
+            proj3Title: 'Página de anime tipo Crunchyroll',
+            proj3Desc: '¡Un proyecto de pasión con amigos! Estamos intentando hacer un reproductor de anime, con manga como contenido extra. La idea es que sea funcional, pero solo con fines demo ;)',
+            proj3Btn: 'Ver repositorio',
             proj4Title: 'Landing para Psicóloga',
             proj4Desc: 'Landing page con efecto glass y llamados claros a la acción para una psicóloga clínica especialista en hipnoterapia.',
             proj4Btn: 'Abrir sitio',
@@ -295,10 +301,10 @@ document.addEventListener('DOMContentLoaded', function() {
         resumeEs.textContent = translations[lang].heroResumeEs;
         // Skills
         document.querySelector('.section-title').textContent = translations[lang].skillsTitle;
-        document.querySelector('h3.text-2xl.font-bold.mb-6').textContent = translations[lang].proficiency;
-        document.querySelectorAll('.font-medium.w-40')[0].textContent = translations[lang].frontend;
-        document.querySelectorAll('.font-medium.w-40')[1].textContent = translations[lang].backend;
-        document.querySelectorAll('.font-medium.w-40')[2].textContent = translations[lang].programming;
+        document.querySelector('h3.text-2xl.font-bold.mb-6').textContent = translations[lang].skillsProficiency;
+        document.querySelectorAll('.font-medium.w-40')[0].textContent = translations[lang].skillsFrontend;
+        document.querySelectorAll('.font-medium.w-40')[1].textContent = translations[lang].skillsBackend;
+        document.querySelectorAll('.font-medium.w-40')[2].textContent = translations[lang].skillsProgramming;
         // Skills section
         document.querySelectorAll('[data-translate-skills]').forEach(el => {
             el.textContent = translations[lang][el.getAttribute('data-translate-skills')];
