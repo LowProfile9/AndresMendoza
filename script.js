@@ -270,6 +270,12 @@ document.addEventListener('DOMContentLoaded', function() {
             heroResumeEs: 'Descargar hoja de vida en español',
         }
     };
+    // Guardar textos originales para usarlos como fallback en traducciones
+    document.querySelectorAll('[data-translate-proj]').forEach(el => {
+        if (!el.dataset.origText) {
+            el.dataset.origText = (el.textContent || '').trim();
+        }
+    });
     function setLanguage(lang) {
         currentLang = lang;
         // Navigation
@@ -327,7 +333,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const langMap = translations[lang] || translations.en;
         document.querySelectorAll('[data-translate-proj]').forEach(el => {
             const key = el.getAttribute('data-translate-proj');
-            const value = (langMap && langMap[key]) ? langMap[key] : (el.textContent || key || '');
+            const fallback = el.dataset.origText || el.textContent || key || '';
+            const value = (langMap && langMap[key]) ? langMap[key] : fallback;
             if (el.tagName === 'A' || el.tagName === 'BUTTON') {
                 const icon = el.getAttribute('data-icon');
                 el.innerHTML = icon ? `<i class="${icon}"></i> ${value}` : value;
