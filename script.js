@@ -323,12 +323,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         // Projects
         document.querySelectorAll('.section-title')[3].textContent = translations[lang].projectsTitle;
-        // Projects cards (if data-translate)
+        // Projects cards (if data-translate) with graceful fallback to avoid undefined
+        const langMap = translations[lang] || translations.en;
         document.querySelectorAll('[data-translate-proj]').forEach(el => {
-            if(el.tagName === 'A' || el.tagName === 'BUTTON') {
-                el.innerHTML = el.getAttribute('data-icon') ? `<i class="${el.getAttribute('data-icon')}"></i> ` + translations[lang][el.getAttribute('data-translate-proj')] : translations[lang][el.getAttribute('data-translate-proj')];
+            const key = el.getAttribute('data-translate-proj');
+            const value = (langMap && langMap[key]) ? langMap[key] : (el.textContent || key || '');
+            if (el.tagName === 'A' || el.tagName === 'BUTTON') {
+                const icon = el.getAttribute('data-icon');
+                el.innerHTML = icon ? `<i class="${icon}"></i> ${value}` : value;
             } else {
-                el.textContent = translations[lang][el.getAttribute('data-translate-proj')];
+                el.textContent = value;
             }
         });
         // Contact
